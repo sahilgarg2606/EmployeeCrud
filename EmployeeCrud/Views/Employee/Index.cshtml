@@ -1,0 +1,35 @@
+﻿@model List<EmployeeCrud.Context.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .displaynone {
+        display: none;
+    }
+</style>
+<h2>Employee Details</h2>
+
+<table class="table table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Location</th>
+        <th>Salary</th>
+        <th>Action</th>
+    </tr>
+    @foreach(var item in Model)
+            {
+                <tr>
+                    @*<td ></td>*@
+                    <td>@item.EmpName</td>
+                    <td>@item.EmpDep</td>
+                    <td>@item.EmpLoc</td>
+                    <td>@item.EmpSal</td>
+                    <td>
+                       
+                       <a href="@Url.Action("AddEmployee", new {item.EmpId , item.EmpName , item.EmpDep,item.EmpLoc,item.EmpSal} )" class="btn btn-primary">Edit</a>
+                       <a href="@Url.Action("Delete" , new {item.EmpId})" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+</table>
